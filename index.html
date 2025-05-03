@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jurnal Civic PoliBrain</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    section {
+      max-width: 800px;
+      margin: auto;
+      background: #1f1f2e;
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 30px;
+    }
+    h2, h3 {
+      color: #ff55cc;
+    }
+    textarea, input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #2b2b44;
+      color: #fff;
+    }
+    button {
+      background: #ff55cc;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .entry {
+      background: #2e2e3f;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    small {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="leadership-evolution">
+    <h2>🧱 Leadership Evolution</h2>
+    <p>Ultimul profil: <strong id="latest-profile">Tesla (Futurism)</strong></p>
+    <p>Trendul tău: <em id="trend">ai devenit mai pragmatic cu 15%</em></p>
+    <p>Badge câștigat: <strong id="badge">Diplomat Echilibrat</strong></p>
+  </section>
+
+  <section id="news-reactions">
+    <h2>📰 Reacții la Știri</h2>
+    <input type="text" id="news-title" placeholder="Titlul știrii sau țara">
+    <textarea id="news-reaction" placeholder="Ce ai fi făcut tu ca lider? Ce opinie ai?" rows="4"></textarea>
+    <button onclick="saveNewsReaction()">Salvează reacția</button>
+    <div id="news-entries"></div>
+  </section>
+
+  <section id="quick-notes">
+    <h2>📓 Notițe rapide</h2>
+    <textarea id="note-content" placeholder="Idei civice, discursuri, reforme..." rows="4"></textarea>
+    <button onclick="saveQuickNote()">Salvează notița</button>
+    <div id="note-entries"></div>
+  </section>
+
+  <section id="insight-log">
+    <h2>🗓 Cronologie cu Insight-uri</h2>
+    <p>„În aprilie ai evaluat <strong>12 articole</strong>. <strong>75%</strong> le-ai considerat propagandă.”</p>
+    <p>„Ai evoluat de la idealist la lider strategic.”</p>
+    <p>„Ai salvat 3 idei de reforme. Le poți transforma într-un discurs?”</p>
+  </section>
+
+  <script>
+    function saveNewsReaction() {
+      const title = document.getElementById("news-title").value;
+      const content = document.getElementById("news-reaction").value;
+      if (!title || !content) return;
+      const entry = { title, content, date: new Date().toLocaleString() };
+      let entries = JSON.parse(localStorage.getItem("newsReactions")) || [];
+      entries.push(entry);
+      localStorage.setItem("newsReactions", JSON.stringify(entries));
+      renderNewsReactions();
+    }
+
+    function renderNewsReactions() {
+      const entries = JSON.parse(localStorage.getItem("newsReactions")) || [];
+      const container = document.getElementById("news-entries");
+      container.innerHTML = "";
+      entries.reverse().forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "entry";
+        div.innerHTML = `<h4>${entry.title}</h4><p>${entry.content}</p><small>${entry.date}</small>`;
+        container.appendChild(div);
+      });
+    }
+
+    function saveQuickNote() {
+      const content = document.getElementById("note-content").value;
+      if (!content) return;
+      const note = { content, date: new Date().toLocaleString() };
+      let notes = JSON.parse(localStorage.getItem("quickNotes")) || [];
+      notes.push(note);
+      localStorage.setItem("quickNotes", JSON.stringify(notes));
+      renderQuickNotes();
+    }
+
+    function renderQuickNotes() {
+      const notes = JSON.parse(localStorage.getItem("quickNotes")) || [];
+      const container = document.getElementById("note-entries");
+      container.innerHTML = "";
+      notes.reverse().forEach(note => {
+        const div = document.createElement("div");
+        div.className = "entry";
+        div.innerHTML = `<p>${note.content}</p><small>${note.date}</small>`;
+        container.appendChild(div);
+      });
+    }
+
+    window.onload = () => {
+      renderNewsReactions();
+      renderQuickNotes();
+    }
+  </script>
+
+</body>
+</html>
