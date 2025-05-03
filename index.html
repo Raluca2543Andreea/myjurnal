@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jurnal Civic PoliBrain</title>
+  <title> Civic Jurnal PoliBrain</title>
   <style>
     body {
       background-color: #121212;
@@ -54,9 +54,9 @@
 
   <section id="leadership-evolution">
     <h2>🧱 Leadership Evolution</h2>
-    <p>Ultimul profil: <strong id="latest-profile">Tesla (Futurism)</strong></p>
-    <p>Trendul tău: <em id="trend">ai devenit mai pragmatic cu 15%</em></p>
-    <p>Badge câștigat: <strong id="badge">Diplomat Echilibrat</strong></p>
+    <p>Last profile: <strong id="latest-profile">Tesla (Futurism)</strong></p>
+    <p>Your trend: <em id="trend">you've become 15% more pragmatic </em></p>
+    <p>Badge won: <strong id="badge">Diplomat Strong</strong></p>
   </section>
 
   <section id="news-reactions">
@@ -68,19 +68,18 @@
   </section>
 
   <section id="quick-notes">
-    <h2>📓 Notițe rapide</h2>
-    <textarea id="note-content" placeholder="Idei civice, discursuri, reforme..." rows="4"></textarea>
-    <button onclick="saveQuickNote()">Salvează notița</button>
+    <h2>📓 Quick notes</h2>
+    <textarea id="note-content" placeholder="Civic ideas, speeches, reforms..." rows="4"></textarea>
+    <button onclick="saveQuickNote()">Save note</button>
     <div id="note-entries"></div>
   </section>
 
-  <section id="insight-log">
-    <h2>🗓 Cronologie cu Insight-uri</h2>
-    <p>„În aprilie ai evaluat <strong>12 articole</strong>. <strong>75%</strong> le-ai considerat propagandă.”</p>
-    <p>„Ai evoluat de la idealist la lider strategic.”</p>
-    <p>„Ai salvat 3 idei de reforme. Le poți transforma într-un discurs?”</p>
-  </section>
-
+<section id="insight-log">
+<h2>🗓 Insights Timeline</h2>
+<p>“In April you rated <strong>12 articles</strong>. <strong>75%</strong> of them you considered propaganda.”</p>
+<p>“You evolved from idealist to strategic leader.”</p>
+<p>“You saved 3 reform ideas. Can you turn them into a speech?”</p>
+</section>
   <script>
     function saveNewsReaction() {
       const title = document.getElementById("news-title").value;
